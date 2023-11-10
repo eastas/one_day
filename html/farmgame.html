@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青蛙跳一跳</title>
+    <link rel="stylesheet" href="../css/base.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .imgBox {
+            position: fixed;
+            width: 100vw;
+            margin: 0 auto;
+            max-width: 1220px;
+            overflow: hidden;
+            /* top: 30%; */
+            /* height: 100vh; */
+            /* border: 1px solid red; */
+        }
+        
+        .imgBox>img {
+            position: absolute;
+        }
+        
+        img.bg {
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            z-index: 0;
+            /* height: 100%; */
+        }
+        /* 荷叶 */
+        /* 第一类荷叶 */
+        
+        .lotusLeaf1 {
+            width: 12%;
+            top: 18%;
+            left: 66%;
+            z-index: 5;
+            transform-origin: center bottom;
+            animation: treerotaX 14s infinite;
+        }
+        
+        .lotusLeaf12 {
+            width: 10%;
+            top: 20%;
+            left: 50%;
+            z-index: 5;
+            transform-origin: center bottom;
+            animation: treerotaX 18s infinite;
+        }
+        
+        .lotusLeaf13 {
+            width: 13%;
+            top: 36%;
+            left: 51.875%;
+            z-index: 3;
+            transform-origin: center bottom;
+            animation: treerotaX 13s infinite;
+        }
+        
+        .lotusLeaf14 {
+            width: 9.6875%;
+            top: 50.7917%;
+            left: 41.7708%;
+            z-index: 5;
+            transform-origin: center bottom;
+            animation: treerotaX 16s infinite;
+        }
+        
+        .lotusLeaf15 {
+            width: 9.6875%;
+            top: 54.1563%;
+            left: 60.7083%;
+            z-index: 3;
+            transform-origin: center bottom;
+            animation: treerotaX 12s infinite;
+        }
+        
+        .lotusLeaf16 {
+            width: 9.6875%;
+            top: 60.2083%;
+            left: 24%;
+            z-index: 3;
+            transform-origin: center bottom;
+            animation: treerotaX 16s infinite;
+        }
+        
+        .lotusLeaf17 {
+            width: 12.6875%;
+            /* height: 6%; */
+            top: 72.2083%;
+            left: 26%;
+            z-index: 3;
+            transform-origin: center bottom;
+            animation: treerotaX 10s infinite;
+        }
+        /* 第二类荷叶 */
+        
+        .lotusLeaf2 {
+            width: 10.9375%;
+            top: 7.8125%;
+            left: 8.4375%;
+            z-index: 5;
+            transform-origin: center bottom;
+            animation: treerotaX 21s infinite;
+        }
+        
+        .lotusLeaf22 {
+            width: 8%;
+            top: 1%;
+            left: 28.4375%;
+            z-index: 5;
+            transform-origin: center bottom;
+            animation: treerotaX 20s infinite;
+        }
+        
+        .normalfrog {
+            /* position: fixed !important; */
+            width: 5.7292vw;
+            height: 4.7292vw;
+            top: 6%;
+            left: 81.25vw;
+            z-index: 9;
+            transform-origin: center bottom;
+            /* border: 1px solid #999; */
+            animation: forgb .5s infinite;
+            transition: all .1s ease-in-out;
+        }
+        
+        .failedfrog {
+            position: absolute;
+            left: 40%;
+            transform: rotateZ(60deg);
+            top: 30%;
+        }
+        
+        .failBox span {
+            position: absolute;
+            left: 42%;
+            top: 60%;
+        }
+        
+        .failBox {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: rgba(66, 66, 66, 0.459);
+            z-index: 10;
+            transform-origin: center bottom;
+            /* animation: treerotaX 10s infinite; */
+        }
+        /* 按钮 */
+        /* submitbtn */
+        
+        @keyframes forgb {
+            0% {
+                transform: translate(0, 0);
+                /* transform: rotateZ(0deg); */
+            }
+            50% {
+                /* transform: rotateZ(-3deg); */
+                transform: translate(0%, 40%);
+                /* transform: rotateX(15deg); */
+            }
+            100% {
+                /* transform: rotateZ(0deg); */
+                transform: translate(0, 0);
+                /* transform: rotateX(0deg); */
+            }
+        }
+        
+        @keyframes treerotaX {
+            0% {
+                transform: rotateZ(0deg);
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: rotateZ(-3deg);
+                transform: translate(40%, 50%);
+                /* transform: rotateX(15deg); */
+            }
+            100% {
+                transform: translate(0, 0);
+                transform: translate(0, 0);
+                /* transform: rotateX(0deg); */
+            }
+        }
+        
+        @media screen and (max-width: 500px) {
+            body {
+                display: flex;
+                align-items: center;
+            }
+            h1 {
+                display: block;
+            }
+            .imgBox {
+                position: fixed;
+                width: 100vw;
+                margin: 0 auto;
+                max-width: 1220px;
+                top: 20%;
+                /* height: 100vh; */
+                /* border: 1px solid red; */
+            }
+        }
+        
+        input.submitbtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9;
+        }
+        
+        input.indexbtn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9;
+        }
+        
+        h1 {
+            position: absolute;
+            z-index: 9;
+            font-size: 0.625vw;
+        }
+        
+        .lotus {
+            transition: all 1s ease;
+        }
+        
+        .isriver {
+            position: absolute;
+            z-index: 1;
+            width: 80vw;
+            height: 58vw;
+            top: 4%;
+            left: 10%;
+            border-radius: 50px;
+            transform: rotateZ(24deg);
+            background-color: rgba(212, 184, 184, 0);
+        }
+        
+        .end {
+            position: absolute;
+            width: 10vw;
+            height: 6vw;
+            border-radius: 50%;
+            bottom: 1.0417vw;
+            left: 20%;
+            box-shadow: 0 0 10px rgb(154, 240, 158);
+            border: 2px solid rgb(251, 251, 251);
+            z-index: 9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 255, 255);
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body class="iconfont">
+    <!-- <audio class="bgm" src="../audio/frogCroak.wav" autoplay="auto" preload=""></audio> -->
+    <audio class="bgm2" src="../audio/grig.mp3" autoplay="auto" loop=""></audio>
+    <audio class="audio" src="" autoplay=""></audio>
+
+
+    <section class="imgBox " id="framforg">
+        <!-- <h1>横屏体验更佳哦</h1> -->
+        <img class="bg" src="../images/farmscene/farmTwoBg.png" alt="">
+
+
+        <img class="normalfrog" src="../images/farmscene/normalfrog.png" alt="">
+
+        <img class="lotusLeaf1 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <img class="lotusLeaf12 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <img class="lotusLeaf13 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <img class="lotusLeaf14 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <img class="lotusLeaf15 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <img class="lotusLeaf16 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <img class="lotusLeaf17 lotus" src="../images/farmscene/lotusleaf.png" alt="">
+        <!-- 二类荷叶 -->
+        <img class="lotusLeaf2" src="../images/farmscene/lotusleaf2.png" alt="">
+        <img class="lotusLeaf22" src="../images/farmscene/lotusleaf2.png" alt="">
+
+        <div class="failBox">
+            <img class="failedfrog" src="../images/farmscene/failedfrog.png" alt="">
+            <span>糟糕失败了！点击我继续游戏</span>
+            <div>
+
+            </div>
+        </div>
+        <!-- 按钮 -->
+
+        <input class="indexbtn" type="button" value="返回首页">
+        <input class="submitbtn" type="button" value="点击青蛙开始游戏">
+        <div class="end">
+            <span>终点</span>
+        </div>
+        <div class="isriver">
+
+        </div>
+    </section>
+
+    <script>
+        let lotusLeaf1Dom = document.querySelectorAll('.lotus');
+
+        let normalfrogDom = document.querySelector(".normalfrog");
+
+        let failBoxDom = document.querySelector(".failBox");
+        let failfrogDom = document.querySelector(".failedfrog");
+        console.log(failfrogDom);
+
+        let endDom = document.querySelector('.end');
+        let riverDom = document.querySelector('.isriver');
+        // let imgBoxDom = document.querySelector('.imgBox');
+
+
+        let imgBoxDom = document.querySelector(".imgBox");
+        let btnDom = document.querySelector(".indexbtn");
+        let submitbtnDom = document.querySelector(".submitbtn");
+        let forgWidth = normalfrogDom.offsetWidth;
+        let forgHeight = normalfrogDom.offsetHeight;
+        let forgx = normalfrogDom.offsetLeft;
+        let forgy = normalfrogDom.offsetTop;
+
+
+        let imgBoxTop = imgBoxDom.offsetTop;
+        let imgBoxLeft = imgBoxDom.offsetLeft;
+        btnDom.addEventListener('click', function() {
+            window.location.replace('../index.html');
+        });
+
+        let flag = false;
+        // 获取鼠标坐标
+
+        normalfrogDom.addEventListener('click', function() {
+            flag = true;
+
+            submitbtnDom.value = "游戏中";
+
+        });
+        failfrogDom.addEventListener('click', function() {
+            failBoxDom.style.display = "none";
+
+            normalfrogDom.style.left = forgx + "px";
+            normalfrogDom.style.top = forgy + "px";
+            submitbtnDom.value = "点击青蛙开始游戏";
+
+
+
+
+        });
+        submitbtnDom.addEventListener('click', function() {
+            // flag = true;
+
+
+            // window.location.replace('./farmgame.html');
+        });
+        riverDom.addEventListener('click', function(e) {
+            if (flag) {
+                console.log("lalaa");
+                // failBoxDom.style.top = e.pageY - imgBoxTop + "px";
+                failBoxDom.style.display = "block";
+                submitbtnDom.value = "游戏结束";
+                let x = e.pageX;
+                let y = e.pageY;
+                audioDom.src = "../audio/frogCroak.wav";
+                // let x = el.offsetLeft + el.offsetWidth;
+                // let y = el.offsetTop + el.offsetHeight;
+                // console.log(x, y);
+
+                let fx1 = x - forgWidth / 2;
+                let fy1 = y - forgHeight;
+                normalfrogDom.style.left = fx1 + "px";
+                normalfrogDom.style.top = fy1 + "px";
+                flag = false;
+
+            };
+        });
+        endDom.addEventListener('click', function(e) {
+            if (flag) {
+
+                let x = e.pageX;
+                let y = e.pageY;
+                audioDom.src = "../audio/frogCroak.wav";
+                // let x = el.offsetLeft + el.offsetWidth;
+                // let y = el.offsetTop + el.offsetHeight;
+                // console.log(x, y);
+                let num = 5;
+                setInterval(function() {
+                    num--
+                    submitbtnDom.value = "游戏成功" + num + "s 后进入下一世界";
+
+                }, 1000)
+
+
+                let fx1 = x - forgWidth / 2 - imgBoxLeft;
+                let fy1 = y - forgHeight - imgBoxTop;
+                normalfrogDom.style.left = fx1 + "px";
+                normalfrogDom.style.top = fy1 + "px";
+
+                setTimeout(function() {
+                    console.log(1111);
+                    window.location.replace('./bull.html');
+
+
+                }, 5000)
+            }
+
+        })
+        console.log(imgBoxTop, imgBoxLeft);
+        lotusLeaf1Dom.forEach(el => {
+            // let step = 1;
+            // let left = el.offsetLeft;
+            // let top = el.offsetTop;
+            // let flag = true; //正向
+            // let timer = setInterval(function() {
+            //     if (step > 20) {
+            //         step = Math.random() * 2 - 1;
+            //         flag = false;
+
+            //     } else if (step < -20) {
+            //         step = Math.random() * 2 - 1;
+
+            //         flag = true;
+            //     }
+
+            //     if (flag) {
+            //         step += Math.random() * 2;
+            //     } else {
+            //         step -= Math.random() * 2;
+            //     }
+            //     // console.log(step);
+            //     el.style.left = step + left + "px";
+            //     el.style.top = step + top + "px";
+            //     // step = Math.floor(Math.random() * 8) - 6;
+
+            // }, 100);
+
+            el.addEventListener('click', function(e) {
+                if (flag) {
+                    let x = e.pageX;
+                    let y = e.pageY;
+                    audioDom.src = "../audio/frogCroak.wav";
+                    // let x = el.offsetLeft + el.offsetWidth;
+                    // let y = el.offsetTop + el.offsetHeight;
+                    // console.log(x, y);
+
+                    let fx1 = x - forgWidth / 2 - imgBoxLeft;
+                    let fy1 = y - forgHeight - imgBoxTop;
+                    normalfrogDom.style.left = fx1 + "px";
+                    normalfrogDom.style.top = fy1 + "px";
+
+                    // let x1 = el.offsetLeft + imgBoxLeft;
+                    // let x2 = el.offsetLeft + imgBoxLeft + el.offsetWidth;
+
+                    // let y1 = el.offsetTop + imgBoxTop;
+                    // let y2 = el.offsetTop + imgBoxTop + el.offsetHeight;
+
+                    // let a = setInterval(function() {
+
+
+                    //         x1 = el.offsetLeft + imgBoxLeft;
+                    //         x2 = el.offsetLeft + imgBoxLeft + el.offsetWidth;
+
+                    //         y1 = el.offsetTop + imgBoxTop;
+                    //         y2 = el.offsetTop + imgBoxTop + el.offsetHeight;
+                    //         console.log(fx1, fy1);
+                    //         console.log(x1, x2, y1, y2);
+
+                    //         // if ((fx1 >= x1 && fx1 <= x2) && (fy1 >= y1 && fy1 <= y2)) {
+
+                    //         //     console.log("anquan");
+                    //         // } else {
+                    //         //     console.log("shibai");
+                    //         //     clearInterval(a);
+                    //         // };
+
+                    //     }, 2000)
+                    // normalfrogDom.style.left = el.offsetLeft + forgWidth + "px";
+                    // normalfrogDom.style.top = el.offsetTop + "px";
+
+                };
+
+
+            })
+
+        }, false);
+    </script>
+</body>
+
+</html>
